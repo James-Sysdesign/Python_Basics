@@ -6,3 +6,11 @@ baz.TXT
 hello.RB
 loop.do.rb
 Fav_books
+
+
+    n = len(order)
+    
+    result = []
+    
+    left = 0
+    last_found = -1
