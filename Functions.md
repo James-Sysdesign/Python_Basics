@@ -37,6 +37,38 @@ print(num_square(2))
 print(num_square(my_num))
 ```
 
+def createList(order, k):
+    """
+    order: array of the orders
+    k: screen size
+
+    Uses sliding window to check for min pizza and reuse if not delivered
+    """
+    n = len(order)
+    
+    result = []
+    
+    left = 0
+    last_found = -1
+    
+    while left + k <= n:
+        # if the first negative number in last screen is still on the current screen it will also be the first
+        if last_found >= left:
+            result.append(order[last_found])
+            continue
+        # find the first negative number on this screen if the last one is delivered
+        for i in range(left, left + k):
+            if order[i] < 0:
+                last_found = i
+                result.append(order[i])
+                break
+        # if we found no negative number in this turn, add 0
+        if last_found < left:
+            result.append(0)
+        left += 1
+    return result
+
+    
 * The `def` keyword is used to define functions
 * Functions have to be defined before use
 * A common syntax error is leaving out `:` at end of `def` statement
