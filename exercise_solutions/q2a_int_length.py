@@ -13,7 +13,21 @@ assert len_int(+42) == 2
 assert len_int(-42) == 2
 assert len_int(572342) == 6
 assert len_int(962306349871524124750813401378124) == 33
+"""/*
 
+    # n x n adjacency matric
+    len_matrix = len(matrix)
+
+    # build graph and visited nodes
+    connected = defaultdict(list)
+    seen = set()
+
+    for i in range(n):
+        for j in range(n):
+            if matrix[i][j] == 1:
+                connected[i].append(j)
+
+*/"""
 try:
     len_int('a')
 except TypeError as e:
