@@ -5,3 +5,8 @@
 73e2
 100
 2937
+        # if we found no negative number in this turn, add 0
+        if last_found < left:
+            result.append(0)
+        left += 1
+    return result
