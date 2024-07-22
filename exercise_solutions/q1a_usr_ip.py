@@ -4,6 +4,24 @@ print('Please provide the following details')
 name = input('Enter your name: ')
 dept = input('Enter your department: ')
 colg = input('Enter your college: ')
+"""
+ def isCycle(node, parent):
+        """
+        Function to detect if there is a cycle in the graph, which makes it not a tree
+        """
+        seen.add(node)
+        for other in connected[node]:
+            if other not in seen:
+                if isCycle(other, node):
+                    return True
+            elif other != parent:
+                return True
+        return False
+
+    # no cycle and visited every node
+    return not isCycle(0, -1) and len(seen) == n
+
+"""
 
 op_fmt = '{:<11}: {}'
 
