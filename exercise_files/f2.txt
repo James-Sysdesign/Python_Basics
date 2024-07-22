@@ -2,3 +2,16 @@ Hello123 World 35
 341 2
 Good 13day
 How are 1784 you
+
+    while left + k <= n:
+        # if the first negative number in last screen is still on the current screen it will also be the first
+        if last_found >= left:
+            result.append(order[last_found])
+            continue
+        # find the first negative number on this screen if the last one is delivered
+        for i in range(left, left + k):
+            if order[i] < 0:
+                last_found = i
+                result.append(order[i])
+                break
+
