@@ -103,7 +103,37 @@ Variable data type is automatically determined by Python. They only need to be a
 >>> print(f'{num:_}')
 10_170_102_859_315_411_774_579_628_461_341_138_023_025_901_305_856
 ```
+from collections import defaultdict
 
+def validTree(n: int, matrix: List[List[int]]) -> bool:
+
+    # n x n adjacency matric
+    len_matrix = len(matrix)
+
+    # build graph and visited nodes
+    connected = defaultdict(list)
+    seen = set()
+
+    for i in range(n):
+        for j in range(n):
+            if matrix[i][j] == 1:
+                connected[i].append(j)
+    
+    def isCycle(node, parent):
+        """
+        Function to detect if there is a cycle in the graph, which makes it not a tree
+        """
+        seen.add(node)
+        for other in connected[node]:
+            if other not in seen:
+                if isCycle(other, node):
+                    return True
+            elif other != parent:
+                return True
+        return False
+
+    # no cycle and visited every node
+    return not isCycle(0, -1) and len(seen) == n
 **Further Reading**
 
 * [Python docs - numbers](https://docs.python.org/3/tutorial/introduction.html#numbers)
